@@ -1,3 +1,14 @@
+# Johannes's Terminal
+
+My patched version of st. Applied patches are put in the patches directory.
+
+# requirements
+
+- Xlib header files
+- Harfbuzz library
+
+# original st README
+
 st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
