@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode Nerd Font Mono:pixelsize=24:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "FiraCode Nerd Font Mono:pixelsize=20:antialias=true:autohint=true";
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -94,10 +94,10 @@ char *termname = "st";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.98, alphaUnfocused = 0.95;
+float alpha = 0.98, alphanf = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
+static const char *colorname[256] = {
 	/* 8 normal colors */
 	"#282828",  /* hard contrast: #1d2021 / soft contrast: #32302f */
 	"#cc241d",  /* red     */

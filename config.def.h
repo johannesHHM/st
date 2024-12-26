@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "FiraCode Nerd Font Mono:pixelsize=20:antialias=true:autohint=true";
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -74,7 +74,7 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-char *termname = "st-256color";
+char *termname = "st";
 
 /*
  * spaces per tab
@@ -94,36 +94,27 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.93, alphaUnfocused = 0.6;
+float alpha = 0.98, alphanf = 0.95;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
+static const char *colorname[256] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"black",
+	"#282828",  /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",  /* red     */
+	"#98971a",  /* green   */
+	"#d79921",  /* yellow  */
+	"#458588",  /* blue    */
+	"#b16286",  /* magenta */
+	"#689d6a",  /* cyan    */
+	"#a89984",  /* white   */
+	"#928374",  /* black   */
+	"#fb4934",  /* red     */
+	"#b8bb26",  /* green   */
+	"#fabd2f",  /* yellow  */
+	"#83a598",  /* blue    */
+	"#d3869b",  /* magenta */
+	"#8ec07c",  /* cyan    */
+	"#ebdbb2",  /* white   */
 };
 
 
@@ -131,11 +122,11 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
+unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
-unsigned int defaultcs = 256;
+unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 257;
-unsigned int bg = 0, bgUnfocused = 16;
+unsigned int bg = 0, bgUnfocused = 0;
 
 /*
  * Default shape of cursor
@@ -205,7 +196,9 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-    { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Up,          kscrollup,      {.i =  1} },
+	{ ShiftMask,            XK_Down,        kscrolldown,    {.i =  1} },
 };
 
 /*
