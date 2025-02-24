@@ -803,7 +803,7 @@ xloadcolor(int i, const char *name, Color *ncolor)
 void
 xloadalpha(void)
 {
-	xloadcolor(focused ?bg :bgUnfocused, NULL, &dc.col[defaultbg]);
+	xloadcolor(focused ? bg : bgUnfocused, NULL, &dc.col[defaultbg]);
 	float const usedAlpha = focused ? alpha : alphanf;
 	if (opt_alpha) alpha = strtof(opt_alpha, NULL);
 	dc.col[defaultbg].color.alpha = (unsigned short)(0xffff * usedAlpha);
@@ -2169,18 +2169,19 @@ xrdb_load(void)
 				colorname[i] = ret.addr;
 		}
 		XRESOURCE_LOAD_STRING("foreground", colorname[defaultfg]);
-		XRESOURCE_LOAD_STRING("background", colorname[defaultbg]);
+		XRESOURCE_LOAD_STRING("background", colorname[bg]);
+		XRESOURCE_LOAD_STRING("background", colorname[bgUnfocused]);
 		XRESOURCE_LOAD_STRING("cursorColor", colorname[defaultcs])
 		else {
 		  // this looks confusing because we are chaining off of the if
 		  // in the macro. probably we should be wrapping everything blocks
 		  // so this isn't possible...
-		  defaultcs = defaultfg;
+			defaultcs = defaultfg;
 		}
 		XRESOURCE_LOAD_STRING("reverse-cursor", colorname[defaultrcs])
 		else {
-		  // see above.
-		  defaultrcs = defaultbg;
+			// see above.
+			defaultrcs = defaultbg;
 		}
 
 		XRESOURCE_LOAD_STRING("font", font);

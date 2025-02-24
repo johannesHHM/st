@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode Nerd Font Mono:pixelsize=20:antialias=true:autohint=true";
+static char *font = "FiraCode Nerd Font Mono:pixelsize=22:antialias=true:autohint=true";
 static int borderpx = 0;
 
 /*
@@ -94,10 +94,10 @@ char *termname = "st";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.98, alphanf = 0.95;
+float alpha = 0.98, alphanf = 0.96;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[256] = {
+static const char *colorname[] = {
 	/* 8 normal colors */
 	"#282828",  /* hard contrast: #1d2021 / soft contrast: #32302f */
 	"#cc241d",  /* red     */
@@ -115,6 +115,13 @@ static const char *colorname[256] = {
 	"#d3869b",  /* magenta */
 	"#8ec07c",  /* cyan    */
 	"#ebdbb2",  /* white   */
+
+	[255] = 0,
+	
+	"#ebdbb2",   /* cursor     */
+	"#282828",   /* cursor rev */
+	"#ebdbb2",   /* foreground */
+	"#282828",   /* background */
 };
 
 
@@ -122,11 +129,11 @@ static const char *colorname[256] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 15;
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
-unsigned int bg = 0, bgUnfocused = 0;
+unsigned int bg = 259, bgUnfocused = 259;
 
 /*
  * Default shape of cursor
